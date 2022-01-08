@@ -68,7 +68,7 @@ class Games(commands.Cog):
             now = datetime.now()
             if bonusTime <= now:
                 balances[id]['balance'] += 300
-                delta = timedelta(hours=1)
+                delta = timedelta(minutes=60)
                 bonusTime = now + delta
                 balances[id]['bonus_time'] = bonusTime.isoformat()
                 self.db.updateBalancesToJson(balances)
@@ -81,6 +81,7 @@ class Games(commands.Cog):
                 await ctx.reply(embed=embed)
             else:
                 remainingTime = int((bonusTime - now).seconds / 60)
+                # remainingTime = int((bonusTime - now).seconds)
                 embed = discord.Embed(color=randColor())
                 embed.title = 'Saatlik Bonus'
                 embed.description = f'**{member.mention} Saatlik bonus almak için kalan süre: `{remainingTime}` dakika**'
