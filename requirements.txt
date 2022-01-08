@@ -1,0 +1,5 @@
+discord
+pandas
+pynacl
+python-dotenv
+pymongo
